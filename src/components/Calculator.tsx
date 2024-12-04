@@ -6,8 +6,16 @@ import { Results } from './Results';
 import { GuideImage } from './GuideImage';
 import type { CalculatorState } from '../types/calculator';
 import { calculateLightLength, calculateStrands } from '../utils/calculations';
+import {
+  TreePine,
+  TreeDeciduous,
+  Landmark,
+  PencilRuler,
+  AudioWaveform,
+} from 'lucide-react';
 
 export function Calculator() {
+  const [selectedDevice, setSelectedDevice] = useState('');
   const [itemData, setItemData] = useState<CalculatorState>({
     wrapType: 'cone',
     lightType: 'linear',
@@ -33,33 +41,43 @@ export function Calculator() {
       <img
         src="/Bright_Brothers_Logo_no_tag.svg"
         alt="Bright Brothers logo"
-        className="w-32 h-full mx-auto"
+        className="w-40 h-full mx-auto"
       />
-      <h1 className="text-2xl font-bold text-center mb-8 text-primary">
+      <h1 className="text-3xl font-bold text-center mb-8 text-primary">
         Christmas Lights Calculator
       </h1>
 
       <div className="space-y-6">
         <SelectField
+          selectedValue={selectedDevice}
+          onValueChange={setSelectedDevice}
           label="Wrap Type"
           value={itemData.wrapType}
-          onChange={(value) => setItemData({ ...itemData, wrapType: value })}
+          onChange={(value) => {
+            setItemData({ ...itemData, wrapType: value });
+            setSelectedDevice(value);
+          }}
           options={[
-            { value: 'cone', label: 'Cone' },
-            { value: 'lollipop', label: 'Lollipop' },
-            { value: 'post', label: 'Post' },
+            { icon: TreePine, value: 'cone', label: 'Cone' },
+            { icon: TreeDeciduous, value: 'lollipop', label: 'Lollipop' },
+            { icon: Landmark, value: 'post', label: 'Post' },
           ]}
         />
 
         <GuideImage wrapType={itemData.wrapType} />
 
         <SelectField
+          selectedValue={selectedDevice}
+          onValueChange={setSelectedDevice}
           label="Light Type"
           value={itemData.lightType}
-          onChange={(value) => setItemData({ ...itemData, lightType: value })}
+          onChange={(value) => {
+            setItemData({ ...itemData, lightType: value });
+            setSelectedDevice(value);
+          }}
           options={[
-            { value: 'linear', label: 'Linear Feet' },
-            { value: 'strands', label: 'Strands (24 ft)' },
+            { icon: PencilRuler, value: 'linear', label: 'Linear Feet' },
+            { icon: AudioWaveform, value: 'strands', label: 'Strands (24 ft)' },
           ]}
         />
 
