@@ -1,12 +1,4 @@
-import { LucideIcon } from 'lucide-react';
-
-interface IconBoxProps {
-  icon: LucideIcon;
-  label: string;
-  value: string;
-  isSelected: boolean;
-  onChange: (value: string) => void;
-}
+import { IconBoxProps } from '../types/types.ts';
 
 export function IconBox({
   icon: Icon,

@@ -1,10 +1,4 @@
-import type { LightType } from '../types/calculator';
-
-interface ResultsProps {
-  linearFeet: number;
-  strands: number | null;
-  lightType: LightType;
-}
+import { ResultsProps } from '../types/types.ts';
 
 export function Results({ linearFeet, strands, lightType }: ResultsProps) {
   return (

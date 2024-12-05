@@ -1,17 +1,5 @@
 import { IconBox } from './IconBox.tsx';
-
-interface Option {
-  value: string;
-  label: string;
-}
-
-interface SelectFieldProps {
-  selectedValue: string;
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-  options: Option[];
-}
+import { SelectFieldProps } from '../types/types.ts';
 
 export function SelectField({
   selectedValue,

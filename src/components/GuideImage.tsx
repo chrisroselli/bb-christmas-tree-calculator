@@ -1,8 +1,4 @@
-import type { WrapType } from '../types/calculator';
-
-interface GuideImageProps {
-  wrapType: WrapType;
-}
+import type { GuideImageProps } from '../types/types.ts';
 
 export function GuideImage({ wrapType }: GuideImageProps) {
   const getImageUrl = () => {
@@ -12,9 +8,9 @@ export function GuideImage({ wrapType }: GuideImageProps) {
       case 'lollipop':
         return 'deciduous-tree.jpg';
       case 'post':
-        return 'square-pillar.jpg';
+        return 'round-pillar.jpg';
       default:
-        return '';
+        return 'bb-calc.jpg';
     }
   };
 
@@ -25,13 +21,49 @@ export function GuideImage({ wrapType }: GuideImageProps) {
         alt={`${wrapType} wrapping guide`}
         className="rounded-lg object-cover w-full h-full"
       />
-      <div className="absolute inset-0 rounded-lg flex items-center justify-center">
-        <div className="bg-white/90 px-4 py-2 rounded-md">
-          <p className="text-sm font-medium text-gray-900">
-            Measure height from base to top
-          </p>
-          <p className="text-xs text-gray-600">Width at widest point</p>
-        </div>
+      <div className="grid grid-cols-8 grid-rows-8 absolute inset-0 rounded-lg gap-2 bg-primary bg-opacity-50 pt-2">
+        {wrapType === 'cone' ? (
+          <>
+            <p className="row-start-6 col-span-full w-1/2 justify-self-center text-center self-end text-sm text-white font-bold bg-secondary rounded-full">
+              WIDTH AT BASE
+            </p>
+            <p className="row-start-5 col-span-full w-1/3 justify-self-center text-center self-start text-md text-white font-bold border-secondary border-t-4 border-b-4 border-dashed  -rotate-6">
+              SPACING
+            </p>
+            <div className="row-start-7 row-end-2 h-full col-start-7 w-5 text-center justify-self-start bg-secondary rounded-full"></div>
+            <p className="row-start-3 h-full col-start-6 justify-self-center text-sm text-white font-bold">
+              HEIGHT
+            </p>
+          </>
+        ) : wrapType === 'lollipop' ? (
+          <>
+            <p className="row-start-6 col-start-3 col-end-8 text-center self-end text-sm text-white font-bold bg-secondary rounded-full">
+              WIDTH AT CENTER
+            </p>
+            <p className="row-start-5 col-start-3 col-end-8 text-center self-start text-md text-white font-bold border-secondary border-t-4 border-b-4 border-dashed  -rotate-6">
+              SPACING
+            </p>
+            <div className="row-start-7 row-end-1 h-full col-start-8 w-5 text-center justify-self-start bg-secondary rounded-full"></div>
+            <p className="row-start-3 h-full col-start-7 justify-self-center text-sm text-white font-bold">
+              HEIGHT
+            </p>
+          </>
+        ) : wrapType === 'post' ? (
+          <>
+            <p className="row-start-7 col-span-full px-2 justify-self-center text-center self-end text-sm text-white font-bold bg-secondary rounded-full">
+              WIDTH
+            </p>
+            <p className="row-start-5 col-span-full justify-self-center text-center self-start text-md text-white font-bold border-secondary border-t-4 border-b-4 border-dashed  -rotate-6">
+              SPACING
+            </p>
+            <div className="row-span-full h-4/5 col-start-7 w-5 text-center justify-self-start self-center bg-secondary rounded-full"></div>
+            <p className="row-start-3 h-full col-start-6 justify-self-center text-sm text-white font-bold">
+              HEIGHT
+            </p>
+          </>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );
