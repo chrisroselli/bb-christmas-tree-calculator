@@ -21,7 +21,7 @@ export function GuideImage({ wrapType }: GuideImageProps) {
         alt={`${wrapType} wrapping guide`}
         className="rounded-lg object-cover w-full h-full"
       />
-      <div className="grid grid-cols-8 grid-rows-8 absolute inset-0 rounded-lg gap-2 bg-primary bg-opacity-50 pt-2">
+      <div className="grid grid-cols-8 grid-rows-8 absolute inset-0 rounded-lg gap-2 pt-2">
         {wrapType === 'cone' ? (
           <>
             <p className="row-start-6 col-span-full w-1/2 justify-self-center text-center self-end text-sm text-white font-bold bg-secondary rounded-full">

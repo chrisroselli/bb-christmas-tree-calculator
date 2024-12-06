@@ -11,6 +11,7 @@ import {
   Landmark,
   PencilRuler,
   AudioWaveform,
+  RotateCcw,
 } from 'lucide-react';
 
 export function Calculator() {
@@ -32,9 +33,21 @@ export function Calculator() {
     itemData.spacing,
     itemData.padding
   );
-  console.log(itemData.wrapType);
   const totalStrands =
     itemData.lightType === 'strands' ? calculateStrands(totalLinearFeet) : null;
+
+  const resetAllData = () => {
+    setSelectedWrapType('');
+    setSelectedLightType('');
+    setItemData({
+      wrapType: '',
+      lightType: 'linear',
+      height: 0,
+      width: 0,
+      spacing: 1,
+      padding: 0,
+    });
+  };
 
   return (
     <div className="max-w-xl mx-auto p-4 space-y-6">
@@ -105,15 +118,24 @@ export function Calculator() {
             onChange={(value) => setItemData({ ...itemData, padding: value })}
             min={0}
             max={100}
-            step={1}
+            step={10}
             itemType={itemData.wrapType}
           />
         </div>
-        <Results
-          linearFeet={totalLinearFeet}
-          strands={totalStrands}
-          lightType={itemData.lightType}
-        />
+        <div className="flex gap-2">
+          <Results
+            linearFeet={totalLinearFeet}
+            strands={totalStrands}
+            lightType={itemData.lightType}
+          />
+          <button
+            type="button"
+            className="bg-secondary rounded-md basis-1/5 flex items-center justify-center"
+            onClick={resetAllData}
+          >
+            <RotateCcw className="text-white h-8 w-8" />
+          </button>
+        </div>
       </div>
     </div>
   );

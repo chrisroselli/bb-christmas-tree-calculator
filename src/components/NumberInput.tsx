@@ -6,20 +6,19 @@ export function NumberInput({
   value,
   onChange,
   min,
+  max,
   step,
   label,
   itemType,
 }: NumberInputProps) {
   const handleIncrement = () => {
-    const newValue = value + step;
+    const newValue = Math.min(value + step, 100);
     onChange(newValue);
   };
 
   const handleDecrement = () => {
-    const newValue = value - step;
-    if (newValue >= min) {
-      onChange(newValue);
-    }
+    const newValue = Math.max(value - step, min);
+    onChange(newValue);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +27,7 @@ export function NumberInput({
       onChange(newValue);
     }
   };
-
+  console.log(label);
   return (
     <div className="flex flex-col gap-2 text-center">
       <div className="">{label}</div>
@@ -44,10 +43,11 @@ export function NumberInput({
         </button>
         <input
           type="text"
-          value={value}
+          value={`${value} ${label === 'Padding' ? '%' : label === 'Wrap Spacing' ? 'in' : 'ft'}`}
           onChange={handleInputChange}
           disabled={itemType === ''}
           min={min}
+          max={max}
           step={step}
           className="w-full border-0 text-secondary py-1 font-bold text-center text-xl focus:outline-none focus:ring-2 focus:ring-primary disabled:text-gray-300"
         />

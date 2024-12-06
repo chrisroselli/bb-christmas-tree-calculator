@@ -2,7 +2,7 @@ import { ResultsProps } from '../types/types.ts';
 
 export function Results({ linearFeet, strands, lightType }: ResultsProps) {
   return (
-    <div className="mt-8 p-4 bg-blue-50 rounded-lg">
+    <div className="p-4 bg-blue-100 rounded-lg basis-4/5">
       <h2 className="text-xl font-semibold text-secondary mb-2">Results</h2>
       {lightType === 'linear' ? (
         <p className="text-primary">

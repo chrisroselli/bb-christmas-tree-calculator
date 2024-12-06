@@ -6,13 +6,10 @@ export default {
       colors: {
         primary: {
           DEFAULT: '#0057A3',
-          light: '#60A5FA',
-          dark: '#1E40AF',
+          light: '#19c1f3',
         },
         secondary: {
           DEFAULT: '#e3121a',
-          light: '#FCD34D',
-          dark: '#B45309',
         },
       },
     },
