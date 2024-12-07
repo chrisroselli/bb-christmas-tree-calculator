@@ -6,7 +6,7 @@ export const calculateLightLength = (
   padding: number
 ): number => {
   const heightInInches = height * 12;
-  const diameter = width;
+  const diameter = width * 12;
 
   let baseLength = 0;
 

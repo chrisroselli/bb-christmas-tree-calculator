@@ -10,6 +10,7 @@ export function NumberInput({
   step,
   label,
   itemType,
+  lightType,
 }: NumberInputProps) {
   const handleIncrement = () => {
     const newValue = Math.min(value + step, 100);
@@ -27,15 +28,15 @@ export function NumberInput({
       onChange(newValue);
     }
   };
-  console.log(label);
+
   return (
     <div className="flex flex-col gap-2 text-center">
-      <div className="">{label}</div>
+      <div className="text-primary font-semibold">{label}</div>
       <div className="rounded-lg">
         <button
           type="button"
           onClick={handleIncrement}
-          disabled={itemType === ''}
+          disabled={itemType === '' || lightType === ''}
           className="w-full flex h-10 rounded-t items-center justify-center bg-primary disabled:bg-gray-300 disabled:cursor-not-allowed"
           aria-label="Increase value"
         >
@@ -43,18 +44,18 @@ export function NumberInput({
         </button>
         <input
           type="text"
-          value={`${value} ${label === 'Padding' ? '%' : label === 'Wrap Spacing' ? 'in' : 'ft'}`}
+          value={`${value} ${label === 'Padding' ? '%' : label === 'Spacing' ? 'in' : 'ft'}`}
           onChange={handleInputChange}
-          disabled={itemType === ''}
+          disabled={itemType === '' || lightType === ''}
           min={min}
           max={max}
           step={step}
-          className="w-full border-0 text-secondary py-1 font-bold text-center text-xl focus:outline-none focus:ring-2 focus:ring-primary disabled:text-gray-300"
+          className="w-full border-0 text-secondary py-1 font-bold text-center text-xl focus:outline-none focus:ring-2 focus:ring-primary disabled:text-gray-300 pointer-events-none"
         />
         <button
           type="button"
           onClick={handleDecrement}
-          disabled={itemType === ''}
+          disabled={itemType === '' || lightType === ''}
           className="w-full flex h-10 rounded-b items-center justify-center bg-primary disabled:bg-gray-300 disabled:cursor-not-allowed"
           aria-label="Decrease value"
         >

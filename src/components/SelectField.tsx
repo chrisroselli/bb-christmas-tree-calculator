@@ -7,7 +7,7 @@ export function SelectField({
   options,
 }: SelectFieldProps) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 flex justify-center">
       <div className="flex gap-4 w-full max-w-2xl">
         {options.map((option) => (
           <IconBox

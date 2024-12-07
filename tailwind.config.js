@@ -3,6 +3,10 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      backgroundImage: {
+        'graduation-marks':
+          'repeating-linear-gradient(to bottom, black, black 2px, transparent 1px, transparent 10px)',
+      },
       colors: {
         primary: {
           DEFAULT: '#0057A3',

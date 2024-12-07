@@ -20,7 +20,7 @@ export function IconBox({
         size={28}
         className={isSelected ? 'text-white' : 'text-secondary'}
       />
-      <span className="text-lg font-bold">{label}</span>
+      <span className="text-sm md:text-xl font-bold">{label}</span>
     </button>
   );
 }

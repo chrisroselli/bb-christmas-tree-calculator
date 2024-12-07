@@ -34,12 +34,14 @@ export interface NumberInputProps {
   max?: number;
   step: number;
   itemType: string;
+  lightType: string;
 }
 
 export interface ResultsProps {
   linearFeet: number;
   strands: number | null;
   lightType: string;
+  reset: () => void;
 }
 
 export interface GuideImageProps {
