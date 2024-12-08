@@ -4,9 +4,9 @@ export function GuideImage({ wrapType }: GuideImageProps) {
   const getImageUrl = () => {
     switch (wrapType) {
       case 'cone':
-        return 'https://cdn.treehouseinternetgroup.com/cms_core/bright-brothers/christmas-lights-calculator/christmas-tree.jpg';
+        return 'https://cdn.treehouseinternetgroup.com/cms_core/bright-brothers/christmas-lights-calculator/christmas_tree.jpg';
       case 'lollipop':
-        return 'https://cdn.treehouseinternetgroup.com/cms_core/bright-brothers/christmas-lights-calculator/deciduous-tree.jpg';
+        return 'https://cdn.treehouseinternetgroup.com/cms_core/bright-brothers/christmas-lights-calculator/deciduous_tree.jpg';
       case 'post':
         return 'https://cdn.treehouseinternetgroup.com/cms_core/bright-brothers/christmas-lights-calculator/round-pillar.jpg';
       default:
@@ -72,7 +72,7 @@ export function GuideImage({ wrapType }: GuideImageProps) {
                 WIDTH
               </p>
             </div>
-            <p className="row-start-5 col-span-full justify-self-center text-center self-start text-sm sm:text-base text-white font-bold border-secondary border-t-4 border-b-4 border-dashed  -rotate-6">
+            <p className="row-start-5 col-span-full justify-self-center text-center self-start text-xs sm:text-base text-white font-bold border-secondary border-t-4 border-b-4 border-dashed  -rotate-6">
               SPACING
             </p>
             <div className="row-span-full h-4/5 col-start-7 justify-self-start self-center relative mx-auto w-0.5 sm:w-1 bg-secondary">

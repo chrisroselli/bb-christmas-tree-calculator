@@ -31,7 +31,7 @@ export function NumberInput({
 
   return (
     <div className="flex flex-col gap-2 text-center">
-      <div className="text-primary font-semibold">{label}</div>
+      <div className="text-primary font-semibold w-full">{label}</div>
       <div className="rounded-lg">
         <button
           type="button"
@@ -44,7 +44,7 @@ export function NumberInput({
         </button>
         <input
           type="text"
-          value={`${value} ${label === 'Padding' ? '%' : label === 'Spacing' ? 'in' : 'ft'}`}
+          value={`${value} ${label === 'Padding' ? '%' : label === 'Spacing' || label === 'Width (Inches)' ? 'in' : 'ft'}`}
           onChange={handleInputChange}
           disabled={itemType === '' || lightType === ''}
           min={min}

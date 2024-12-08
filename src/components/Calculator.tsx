@@ -47,16 +47,29 @@ export function Calculator() {
       padding: 0,
     });
   };
-  const bottomRef = useRef(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const selectionsRef = useRef<HTMLDivElement>(null);
+  const firstSelection = useRef(true);
+  const firstResults = useRef(true);
 
   useEffect(() => {
-    if (totalLinearFeet !== 0) {
-      // Scroll to the bottom when the condition is true
-      bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (firstResults.current && totalLinearFeet !== 0) {
+      resultsRef.current?.scrollIntoView({ behavior: 'smooth' });
+      firstResults.current = false;
     }
-  }, [totalLinearFeet]);
+    if (
+      firstSelection.current &&
+      itemData.wrapType !== '' &&
+      itemData.lightType !== ''
+    ) {
+      selectionsRef.current?.scrollIntoView({ behavior: 'smooth' });
+      firstSelection.current = false;
+    }
+  }, [totalLinearFeet, itemData]);
   return (
-    <div className="mb-24 lg:max-w-7xl mx-auto p-6 rounded-3xl space-y-6 sm:mb-0">
+    <div
+      className={`${totalLinearFeet !== 0 ? 'mb-24' : ''} lg:max-w-7xl mx-auto p-6 rounded-3xl space-y-6 sm:mb-0`}
+    >
       <div className="lg:flex lg:flex-row-reverse gap-6">
         <div className="space-y-6 lg:space-y-0 basis-1/2">
           <GuideImage wrapType={itemData.wrapType} />
@@ -97,16 +110,28 @@ export function Calculator() {
             ]}
           />
 
-          <div className="flex gap-2">
-            <NumberInput
-              label="Width"
-              value={itemData.width}
-              onChange={(value) => setItemData({ ...itemData, width: value })}
-              min={0}
-              step={1}
-              itemType={itemData.wrapType}
-              lightType={itemData.lightType}
-            />
+          <div className="flex gap-2 items-end">
+            {selectedWrapType === 'post' ? (
+              <NumberInput
+                label="Width (Inches)"
+                value={itemData.width}
+                onChange={(value) => setItemData({ ...itemData, width: value })}
+                min={0}
+                step={1}
+                itemType={itemData.wrapType}
+                lightType={itemData.lightType}
+              />
+            ) : (
+              <NumberInput
+                label="Width"
+                value={itemData.width}
+                onChange={(value) => setItemData({ ...itemData, width: value })}
+                min={0}
+                step={1}
+                itemType={itemData.wrapType}
+                lightType={itemData.lightType}
+              />
+            )}
 
             <NumberInput
               label="Height"
@@ -138,6 +163,7 @@ export function Calculator() {
               lightType={itemData.lightType}
             />
           </div>
+          <div ref={selectionsRef} className="h-0" />
           {totalLinearFeet !== 0 && (
             <Results
               linearFeet={totalLinearFeet}
@@ -148,7 +174,7 @@ export function Calculator() {
           )}
         </div>
       </div>
-      <div ref={bottomRef} className="h-0" />
+      <div ref={resultsRef} className="h-0" />
     </div>
   );
 }
