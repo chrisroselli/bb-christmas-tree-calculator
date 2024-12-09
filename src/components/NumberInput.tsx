@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import React from 'react';
+import React, { useState } from 'react';
 import { NumberInputProps } from '../types/types.ts';
 
 export function NumberInput({
@@ -12,6 +12,10 @@ export function NumberInput({
   itemType,
   lightType,
 }: NumberInputProps) {
+  const [placeholder, setPlaceholder] = useState(
+    label === 'Padding' ? '%' : label === 'Spacing' ? 'in' : 'ft'
+  );
+
   const handleIncrement = () => {
     const newValue = Math.min(value + step, 100);
     onChange(newValue);
@@ -44,6 +48,13 @@ export function NumberInput({
         </button>
         <input
           type="number"
+          placeholder={placeholder}
+          onFocus={() => setPlaceholder('')}
+          onBlur={() =>
+            setPlaceholder(
+              label === 'Padding' ? '%' : label === 'Spacing' ? 'in' : 'ft'
+            )
+          }
           value={value || ''}
           onChange={handleInputChange}
           disabled={itemType === '' || lightType === ''}
