@@ -2,34 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  /* Track styling */
-  input[type="range"]::-webkit-slider-runnable-track {
-    @apply h-2 bg-primary rounded-lg;
-  }
-  input[type="range"]::-moz-range-track {
-    @apply h-2 bg-primary rounded-lg;
-  }
-  input[type="range"]::-ms-track {
-    @apply h-2 bg-transparent;
-  }
-  input[type="range"]::-ms-fill-lower {
-    @apply bg-primary;
-  }
-  input[type="range"]::-ms-fill-upper {
-    @apply bg-primary;
-  }
+/* Custom styles to hide spinner for number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  @apply appearance-none;
+}
 
-  /* Thumb styling */
-  input[type="range"]::-webkit-slider-thumb {
-    @apply h-6 w-6 bg-secondary rounded-full;
-    -webkit-appearance: none;
-    margin-top: -8px; /* Centers thumb */
-  }
-  input[type="range"]::-moz-range-thumb {
-    @apply h-6 w-6 bg-secondary rounded-full;
-  }
-  input[type="range"]::-ms-thumb {
-    @apply h-6 w-6 bg-secondary rounded-full;
-  }
+input[type="number"] {
+  @apply appearance-none;
 }

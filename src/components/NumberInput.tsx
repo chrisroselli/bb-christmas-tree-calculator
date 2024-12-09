@@ -43,14 +43,14 @@ export function NumberInput({
           <ChevronUp className="h-8 w-8 text-white" />
         </button>
         <input
-          type="text"
-          value={`${value} ${label === 'Padding' ? '%' : label === 'Spacing' || label === 'Width (Inches)' ? 'in' : 'ft'}`}
+          type="number"
+          value={value || ''}
           onChange={handleInputChange}
           disabled={itemType === '' || lightType === ''}
           min={min}
           max={max}
           step={step}
-          className="w-full border-0 text-secondary py-1 font-bold text-center text-xl focus:outline-none focus:ring-2 focus:ring-primary disabled:text-gray-300 pointer-events-none"
+          className="w-full border-0 text-secondary py-1 font-bold text-center text-xl focus:outline-none focus:ring-2 focus:ring-primary disabled:text-gray-300"
         />
         <button
           type="button"

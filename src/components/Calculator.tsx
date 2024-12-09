@@ -21,32 +21,23 @@ export function Calculator() {
     lightType: '',
     height: 0,
     width: 0,
-    spacing: 1,
+    spacing: 0,
     padding: 0,
   });
 
-  const totalLinearFeet = calculateLightLength(
-    itemData.wrapType,
-    itemData.height,
-    itemData.width,
-    itemData.spacing,
-    itemData.padding
-  );
+  const totalLinearFeet =
+    itemData.height * itemData.width * itemData.spacing > 0
+      ? calculateLightLength(
+          itemData.wrapType,
+          itemData.height,
+          itemData.width,
+          itemData.spacing,
+          itemData.padding
+        )
+      : 0;
   const totalStrands =
     itemData.lightType === 'strands' ? calculateStrands(totalLinearFeet) : null;
 
-  const resetAllData = () => {
-    setSelectedWrapType('');
-    setSelectedLightType('');
-    setItemData({
-      wrapType: '',
-      lightType: '',
-      height: 0,
-      width: 0,
-      spacing: 1,
-      padding: 0,
-    });
-  };
   const resultsRef = useRef<HTMLDivElement>(null);
   const selectionsRef = useRef<HTMLDivElement>(null);
   const firstSelection = useRef(true);
@@ -66,6 +57,21 @@ export function Calculator() {
       firstSelection.current = false;
     }
   }, [totalLinearFeet, itemData]);
+
+  const resetAllData = () => {
+    setSelectedWrapType('');
+    setSelectedLightType('');
+    firstSelection.current = true;
+    firstResults.current = true;
+    setItemData({
+      wrapType: '',
+      lightType: '',
+      height: 0,
+      width: 0,
+      spacing: 0,
+      padding: 0,
+    });
+  };
   return (
     <div
       className={`${totalLinearFeet !== 0 ? 'mb-24' : ''} lg:max-w-7xl mx-auto p-6 rounded-3xl space-y-6 sm:mb-0`}
@@ -147,7 +153,7 @@ export function Calculator() {
               label="Spacing"
               value={itemData.spacing}
               onChange={(value) => setItemData({ ...itemData, spacing: value })}
-              min={1}
+              min={0}
               step={1}
               itemType={itemData.wrapType}
               lightType={itemData.lightType}
@@ -157,7 +163,6 @@ export function Calculator() {
               value={itemData.padding}
               onChange={(value) => setItemData({ ...itemData, padding: value })}
               min={0}
-              max={100}
               step={10}
               itemType={itemData.wrapType}
               lightType={itemData.lightType}
