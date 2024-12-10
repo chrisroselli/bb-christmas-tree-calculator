@@ -21,7 +21,7 @@ export function GuideImage({ wrapType }: GuideImageProps) {
               src="https://cdn.treehouseinternetgroup.com/cms_core/bright-brothers/christmas-lights-calculator/Bright_Brothers_Logo_no_tag.svg"
               alt="Bright Brothers Logo"
             />
-            <p className="text-xl sm:text-3xl leading-snug font-primary font-bold text-center text-primary mt-1.5">
+            <p className="text-xl sm:text-2xl leading-snug font-primary font-bold text-center text-primary mt-1.5">
               Christmas Lights Calculator
             </p>
           </div>
