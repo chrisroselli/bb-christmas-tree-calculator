@@ -43,6 +43,21 @@ export function Calculator() {
   const firstSelection = useRef(true);
   const firstResults = useRef(true);
 
+  const resetAllData = () => {
+    setSelectedWrapType('');
+    setSelectedLightType('');
+    firstSelection.current = true;
+    firstResults.current = true;
+    setItemData({
+      wrapType: '',
+      lightType: '',
+      height: 0,
+      width: 0,
+      spacing: 0,
+      padding: 0,
+    });
+  };
+
   useEffect(() => {
     if (firstResults.current && totalLinearFeet !== 0) {
       resultsRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -58,20 +73,6 @@ export function Calculator() {
     }
   }, [totalLinearFeet, itemData]);
 
-  const resetAllData = () => {
-    setSelectedWrapType('');
-    setSelectedLightType('');
-    firstSelection.current = true;
-    firstResults.current = true;
-    setItemData({
-      wrapType: '',
-      lightType: '',
-      height: 0,
-      width: 0,
-      spacing: 0,
-      padding: 0,
-    });
-  };
   return (
     <div
       className={`${totalLinearFeet !== 0 ? 'mb-24' : ''} lg:max-w-7xl mx-auto p-6 rounded-3xl space-y-6 sm:mb-0`}
@@ -119,9 +120,10 @@ export function Calculator() {
           <div className="flex gap-2 items-end">
             {selectedWrapType === 'post' ? (
               <NumberInput
-                label="Width (Inches)"
+                label="Width"
                 value={itemData.width}
                 onChange={(value) => setItemData({ ...itemData, width: value })}
+                placeholder="in"
                 min={0}
                 step={1}
                 itemType={itemData.wrapType}
@@ -132,36 +134,39 @@ export function Calculator() {
                 label="Width"
                 value={itemData.width}
                 onChange={(value) => setItemData({ ...itemData, width: value })}
+                placeholder="ft"
                 min={0}
                 step={1}
                 itemType={itemData.wrapType}
                 lightType={itemData.lightType}
               />
             )}
-
             <NumberInput
               label="Height"
               value={itemData.height}
               onChange={(value) => setItemData({ ...itemData, height: value })}
+              placeholder="ft"
               min={0}
               step={1}
               itemType={itemData.wrapType}
               lightType={itemData.lightType}
             />
-
             <NumberInput
               label="Spacing"
               value={itemData.spacing}
               onChange={(value) => setItemData({ ...itemData, spacing: value })}
+              placeholder="in"
               min={0}
               step={1}
               itemType={itemData.wrapType}
               lightType={itemData.lightType}
             />
+            {/*TODO: disable input field*/}
             <NumberInput
               label="Padding"
               value={itemData.padding}
               onChange={(value) => setItemData({ ...itemData, padding: value })}
+              placeholder="%"
               min={0}
               step={10}
               itemType={itemData.wrapType}

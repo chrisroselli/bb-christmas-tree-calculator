@@ -35,6 +35,7 @@ export interface NumberInputProps {
   step: number;
   itemType: string;
   lightType: string;
+  placeholder?: string;
 }
 
 export interface ResultsProps {

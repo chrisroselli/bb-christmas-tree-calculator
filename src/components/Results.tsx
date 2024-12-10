@@ -9,7 +9,7 @@ export function Results({
 }: ResultsProps) {
   return (
     <div className="flex sm:gap-2 fixed sm:relative left-0 sm:left-auto bottom-0 sm:bottom-auto mt-6 w-full h-[120px]">
-      <div className="p-3 md:p-4 bg-blue-100 sm:rounded-lg basis-4/5">
+      <div className="px-6 py-4 md:p-4 bg-blue-100 sm:rounded-lg basis-4/5">
         <h2 className="text-2xl font-semibold text-secondary mb-1">Results:</h2>
         {lightType === 'linear' ? (
           <p className="text-primary text-lg">
@@ -23,7 +23,7 @@ export function Results({
           <p className="text-primary text-lg">
             You need{' '}
             <span className="font-bold text-2xl text-secondary">{strands}</span>{' '}
-            strands of lights.
+            strand(s) of lights.
             <span className="block text-sm font-bold text-primary mt-1">
               (Total: {linearFeet} linear feet)
             </span>

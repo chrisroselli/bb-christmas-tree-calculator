@@ -1,10 +1,11 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import React, { useState } from 'react';
+import React from 'react';
 import { NumberInputProps } from '../types/types.ts';
 
 export function NumberInput({
   value,
   onChange,
+  placeholder,
   min,
   max,
   step,
@@ -12,17 +13,8 @@ export function NumberInput({
   itemType,
   lightType,
 }: NumberInputProps) {
-  const [placeholder, setPlaceholder] = useState(
-    label === 'Padding' ? '%' : label === 'Spacing' ? 'in' : 'ft'
-  );
-
   const handleIncrement = () => {
     const newValue = Math.min(value + step, 100);
-    onChange(newValue);
-  };
-
-  const handleDecrement = () => {
-    const newValue = Math.max(value - step, min);
     onChange(newValue);
   };
 
@@ -31,6 +23,11 @@ export function NumberInput({
     if (!isNaN(newValue) && newValue >= min) {
       onChange(newValue);
     }
+  };
+
+  const handleDecrement = () => {
+    const newValue = Math.max(value - step, min);
+    onChange(newValue);
   };
 
   return (
@@ -48,13 +45,11 @@ export function NumberInput({
         </button>
         <input
           type="number"
+          pattern="[0-9]*"
+          inputMode="numeric"
           placeholder={placeholder}
-          onFocus={() => setPlaceholder('')}
-          onBlur={() =>
-            setPlaceholder(
-              label === 'Padding' ? '%' : label === 'Spacing' ? 'in' : 'ft'
-            )
-          }
+          onFocus={(e) => (e.target.placeholder = '')}
+          onBlur={(e) => (e.target.placeholder = placeholder as string)}
           value={value || ''}
           onChange={handleInputChange}
           disabled={itemType === '' || lightType === ''}
