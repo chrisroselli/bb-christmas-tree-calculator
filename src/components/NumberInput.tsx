@@ -32,7 +32,9 @@ export function NumberInput({
 
   return (
     <div className="flex flex-col gap-2 text-center">
-      <div className="text-primary font-semibold w-full">{label}</div>
+      <div className="text-primary font-semibold w-full">
+        {label}({placeholder})
+      </div>
       <div className="rounded-lg">
         <button
           type="button"
@@ -52,11 +54,11 @@ export function NumberInput({
           onBlur={(e) => (e.target.placeholder = placeholder as string)}
           value={value || ''}
           onChange={handleInputChange}
-          disabled={itemType === '' || lightType === ''}
+          disabled={itemType === '' || lightType === '' || label === 'Padding'}
           min={min}
           max={max}
           step={step}
-          className="w-full border-0 text-secondary py-1 font-bold text-center text-xl focus:outline-none focus:ring-2 focus:ring-primary disabled:text-gray-300"
+          className={`w-full border-0 text-secondary py-1 font-bold text-center text-xl focus:outline-none focus:ring-2 focus:ring-primary ${label !== 'Padding' && 'disabled:text-gray-300'}`}
         />
         <button
           type="button"

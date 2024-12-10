@@ -161,7 +161,6 @@ export function Calculator() {
               itemType={itemData.wrapType}
               lightType={itemData.lightType}
             />
-            {/*TODO: disable input field*/}
             <NumberInput
               label="Padding"
               value={itemData.padding}
