@@ -15,13 +15,13 @@ export function GuideImage({ wrapType }: GuideImageProps) {
   return (
     <div className="relative aspect-square w-full lg:max-w-xl mx-auto mb-6">
       {!wrapType ? (
-        <div className="flex flex-col items-center justify-center gap-2 h-full">
-          <div className="w-2/3 mx-auto">
+        <div className="flex flex-col items-center justify-center gap-2 h-full rounded-lg object-cover w-full lg:border-2 border-gray-100 bg-white">
+          <div className="w-2/3 sm:w-1/2 mx-auto">
             <img
               src="https://cdn.treehouseinternetgroup.com/cms_core/bright-brothers/christmas-lights-calculator/Bright_Brothers_Logo_no_tag.svg"
               alt="Bright Brothers Logo"
             />
-            <p className="text-xl leading-snug font-primary font-bold text-center text-primary mt-1.5">
+            <p className="text-xl sm:text-3xl leading-snug font-primary font-bold text-center text-primary mt-1.5">
               Christmas Lights Calculator
             </p>
           </div>
@@ -30,7 +30,7 @@ export function GuideImage({ wrapType }: GuideImageProps) {
         <img
           src={getImageUrl()}
           alt={`${wrapType} wrapping guide`}
-          className="rounded-lg object-cover w-full h-full lg:border-2 border-gray-100"
+          className="rounded-lg object-cover w-full h-full lg:border-2 border-gray-100 bg-white"
         />
       )}
       <div className="grid grid-cols-8 grid-rows-8 absolute inset-0 rounded-lg gap-2 p-3">
