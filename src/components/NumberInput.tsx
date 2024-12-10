@@ -58,7 +58,7 @@ export function NumberInput({
           min={min}
           max={max}
           step={step}
-          className={`w-full border-0 text-secondary py-1 font-bold text-center text-xl focus:outline-none focus:ring-2 focus:ring-primary ${label !== 'Padding' && 'disabled:text-gray-300'}`}
+          className={`w-full border-0 text-secondary py-1 font-bold text-center text-xl focus:outline-none ${label !== 'Padding' && 'disabled:text-gray-300'}`}
         />
         <button
           type="button"

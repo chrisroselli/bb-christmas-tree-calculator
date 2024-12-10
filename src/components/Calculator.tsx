@@ -74,9 +74,7 @@ export function Calculator() {
   }, [totalLinearFeet, itemData]);
 
   return (
-    <div
-      className={`${totalLinearFeet !== 0 ? 'mb-24' : ''} lg:max-w-7xl mx-auto p-6 rounded-3xl space-y-6 sm:mb-0`}
-    >
+    <div className="pb-28 lg:max-w-7xl mx-auto p-6 rounded-3xl space-y-6 sm:mb-0">
       <div className="lg:flex lg:flex-row-reverse gap-6">
         <div className="space-y-6 lg:space-y-0 basis-1/2">
           <GuideImage wrapType={itemData.wrapType} />
@@ -117,7 +115,7 @@ export function Calculator() {
             ]}
           />
 
-          <div className="flex gap-2 items-end">
+          <div className="flex gap-2">
             {selectedWrapType === 'post' ? (
               <NumberInput
                 label="Width"
