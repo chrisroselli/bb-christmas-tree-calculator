@@ -32,7 +32,7 @@ export function NumberInput({
 
   return (
     <div className="flex flex-col gap-2 text-center">
-      <div className="text-primary font-semibold w-full">
+      <div className="text-primary text-xs sm:text-lg font-semibold w-full">
         {label}({placeholder})
       </div>
       <div className="rounded-lg">

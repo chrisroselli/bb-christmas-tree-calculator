@@ -9,18 +9,30 @@ export function GuideImage({ wrapType }: GuideImageProps) {
         return 'https://cdn.treehouseinternetgroup.com/cms_core/bright-brothers/christmas-lights-calculator/deciduous_tree.jpg';
       case 'post':
         return 'https://cdn.treehouseinternetgroup.com/cms_core/bright-brothers/christmas-lights-calculator/round-pillar.jpg';
-      default:
-        return 'https://cdn.treehouseinternetgroup.com/cms_core/bright-brothers/christmas-lights-calculator/bb-calc.jpg';
     }
   };
 
   return (
     <div className="relative aspect-square w-full lg:max-w-xl mx-auto mb-6">
-      <img
-        src={getImageUrl()}
-        alt={`${wrapType} wrapping guide`}
-        className="rounded-lg object-cover w-full h-full lg:border-2 border-gray-100"
-      />
+      {!wrapType ? (
+        <div className="flex flex-col items-center justify-center gap-2 h-full">
+          <div className="w-2/3 mx-auto">
+            <img
+              src="https://cdn.treehouseinternetgroup.com/cms_core/bright-brothers/christmas-lights-calculator/Bright_Brothers_Logo_no_tag.svg"
+              alt="Bright Brothers Logo"
+            />
+            <p className="text-xl leading-snug font-primary font-bold text-center text-primary mt-1.5">
+              Christmas Lights Calculator
+            </p>
+          </div>
+        </div>
+      ) : (
+        <img
+          src={getImageUrl()}
+          alt={`${wrapType} wrapping guide`}
+          className="rounded-lg object-cover w-full h-full lg:border-2 border-gray-100"
+        />
+      )}
       <div className="grid grid-cols-8 grid-rows-8 absolute inset-0 rounded-lg gap-2 p-3">
         {wrapType === 'cone' ? (
           <>
