@@ -6,15 +6,16 @@ export const calculateLightLength = (
   padding: number
 ): number => {
   const heightInInches = height * 12;
+  const spacingInInches = spacing / 12;
 
   let baseLength = 0;
 
   switch (wrapType) {
     case 'cone':
-      baseLength = Math.PI * width * (heightInInches / spacing) * 0.6;
+      baseLength = Math.PI * width * (heightInInches / spacingInInches) * 0.6;
       break;
     case 'lollipop':
-      baseLength = Math.PI * width * (heightInInches / spacing) * 0.8;
+      baseLength = Math.PI * width * (heightInInches / spacingInInches) * 0.8;
       break;
     case 'post':
       baseLength = Math.PI * width * (heightInInches / spacing);
